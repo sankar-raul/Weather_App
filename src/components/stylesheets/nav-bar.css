@@ -1,0 +1,47 @@
+.Navbar {
+    width: 100%;
+    /* border: .1px solid gray; */
+    display: grid;
+    grid-template-columns: minmax(max-content, 20%) 1fr;
+    align-items: center;
+}
+.nav-menu {
+    object-fit: contain;
+    height: 70%;
+    margin-left: 20%;
+}
+.SButton {
+    border-radius: 50%;
+    height: 60%;
+}
+.SBox {
+    height: 60%;
+    width: clamp(150px, 60%, 600px);
+}
+.SBox > input {
+    height: 100%;
+    width: 100%;
+    border-radius: 1px;
+    border: 1px solid #ddd6;
+    background: #ECF4FF;
+    caret-color: rgb(86, 170, 85);
+    outline: none;
+    padding: 6px;
+    color: #1248;
+    font-size: 17px;
+}
+.SBox > input:focus {
+    outline: 2px solid #ddd3;
+}
+.SBox > input::placeholder {
+    font-size: 13px;
+    color: #1246;
+}
+.Searchbox {
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}

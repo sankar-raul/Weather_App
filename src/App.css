@@ -1,0 +1,20 @@
+.items {
+  background: #fff;
+  border: 2px solid lime;
+}
+.Navbar {
+  height: 64px;
+  grid-area: navbar;
+}
+.Section1 {
+  height: 100%;
+  grid-area: section1;
+}
+.Section2 {
+  grid-area: section2;
+  height: 100%;
+}
+.Section3 {
+  grid-area: section3;
+  height: 100%;
+}

@@ -1,0 +1,19 @@
+.mainFrame {
+    height: 100%;
+    display: grid;
+    grid-template-areas: "navbar navbar navbar" "section1 section2 section2" "section3 section3 section3";
+    grid-template-columns: clamp(300px, 100%, 380px) 1fr 1fr;
+    grid-template-rows: 64px clamp(430px, 60dvh, 430px) 1fr;
+}
+
+@media (max-width: calc(390px * 2)) {
+    .mainFrame {
+        align-items: center;
+        grid-template-areas: "navbar navbar navbar"
+                            "section1 section1 section1"
+                            "section2 section2 section2"
+                            "section3 section3 section3";
+        grid-template-rows: 64px clamp(430px, 60dvh, 430px) clamp(300px, 20dvh, 360px) clamp(300px, 20dvh, 360px);
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

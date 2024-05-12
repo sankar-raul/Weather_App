@@ -1,0 +1,53 @@
+.box-shadow {
+    background: #F9FBFF;
+    box-shadow: -2px 3px 14px 1px #E7EDF5;
+    border-radius: 25px;
+}
+.weatherbox {
+    width: 95%;
+    height: 70%;
+    margin: auto auto;
+    display: grid;
+    border-radius: 25px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0px;
+}
+.weatherbox .infos .icon {
+    object-fit: contain;
+    height: 40%;
+}
+.weatherbox .infos {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.weatherbox .infos > .value {
+    font-size: .8rem;
+    font-weight: 600;
+    padding-top: 3px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.weatherbox .infos > .name {
+    font-size: .8rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.weatherbox * {
+     border: none; 
+}
+.more-details {
+    border: 1px solid lime;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    /* min-width: 100%; */
+    overflow: hidden;
+}
+.forecast-component {
+    display: flex;
+    overflow-x: scroll;
+    flex-wrap: wrap;
+}
+.more-details .bottom {
+    background: lime;
+}
