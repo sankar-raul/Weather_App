@@ -4,5 +4,5 @@ export default function getIcon(weatherId = 800) {
     const res = icons.filter((icon, index) => {
         return weatherId > ids[index] && weatherId <= ids[index + 1]
     })
-    return `${res[0]}.png`
+    return `${res[0]}`
 }
