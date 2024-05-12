@@ -7,6 +7,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+::spelling-error {
+  text-decoration: underline dotted #f348;
+}
+::selection {
+  background: rgba(0, 255, 136, 0.4);
+}
 * {
   box-sizing: border-box;
   margin: 0;
