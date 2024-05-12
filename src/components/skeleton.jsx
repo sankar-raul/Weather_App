@@ -24,9 +24,8 @@ function Section1() {
                 </p>
             </div>
             <div className="weather-main" style={{gap: "10px"}}>
-                <div className="weather-icon" style={{position: "relative"}}>
-                <Skeleton style={{position: "absolute"}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"100%"} height={"100%"}/>
-                    <img src="/src/components/componentAssets/weather/sun-cloud.png" className="icon- temp-icon" alt="&nbsp; ok"/>
+                <div className="weather-icon" style={{position: "relative", height: "100%"}}>
+                <Skeleton style={{position: ""}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"100%"} height={"100%"}/>
                 </div>
                 <div className="temperature">
                     <p className="temp">
