@@ -1,10 +1,9 @@
 import { useState, useEffect, useCallback } from "react"
-import getCountry  from "./plainJs/getCountry"
-import "./stylesheets/sectionStyle.css"
-import getIcon from "./plainJs/getIcon"
-import images from "./componentAssets/images"
-import Section1Skeleton from "./skeleton"
-import { WeatherBox, WeatherInfo, MoreDetails } from "./Section1Componets"
+import getCountry  from "../plainJs/getCountry"
+import "./sectionStyle.css"
+import getIcon from "../plainJs/getIcon"
+import images from "../componentAssets/images"
+import { WeatherBox, WeatherInfo, MoreDetails } from "../Section1Componets"
 export default function Section1(props) {
     const [date, setDate] = useState("")
     const [data, setData] = useState(null)
@@ -47,21 +46,5 @@ export default function Section1(props) {
             </div>
         )}
         </>
-    )
-}
-
-export function Section2(props) {
-    return (
-            <div className="Section2">
-            <MoreDetails data={props.data} />
-        </div>
-    )
-}
-export function Section3(props) {
-
-    return (
-        <div className="Section3">
-            Working on it!
-        </div>
     )
 }

@@ -3,29 +3,3 @@
     padding: 0px;
     box-sizing: border-box;
 }
-.weatherSection {
-    /* display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    min-height: 100%;
-    justify-content: space-between; */
-    /* border: 1px solid blue; */
-    /* display: grid;
-    grid-template-columns: max-content 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas: "section1 section2" "section3 section3"; */
-}
-:root {
-    
-}
-.skeleton1 {
-
-    /* border: 1px solid magenta; */
-}
-.skeleton2 {
-    /* border: 1px solid lime; */
-
-}
-.skeleton3 {
-  
-}

@@ -2,9 +2,11 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import getLocation from "./Coord.js"
 import { getCoordLocation } from "./components/api/weather.js"
-import Section1, { Section2, Section3 } from "./components/Sections.jsx"
+import Section1 from "./components/Section1"
+import Section3 from "./components/Section3"
+import Section2 from "./components/Section2"
 import "./weather.css"
-import SectionSkeleton from "./components/skeleton"
+import SectionSkeleton from "./components/SectionSkeleton"
 const api = ""
 export default function WeatherSection() {
     const [data, setData] = useState(null)
@@ -24,7 +26,6 @@ export default function WeatherSection() {
             console.log(error)
         }
     }
-
     useEffect(() => {
         fetchData()
     }, [])

@@ -1,6 +1,6 @@
 import react from "react"
-import "./stylesheets/skeleton.css"
-import "./stylesheets/sectionStyle.css"
+import "./skeleton.css"
+import "../Section1/sectionStyle.css"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 export default function Section1Skeleton({className}) {
