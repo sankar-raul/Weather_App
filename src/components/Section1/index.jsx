@@ -3,7 +3,7 @@ import getCountry  from "../plainJs/getCountry"
 import "./sectionStyle.css"
 import getIcon from "../plainJs/getIcon"
 import images from "../componentAssets/images"
-import { WeatherBox, WeatherInfo, MoreDetails } from "../Section1Componets"
+import { WeatherBox, WeatherInfo } from "../Section1Componets"
 export default function Section1(props) {
     const [date, setDate] = useState("")
     const [data, setData] = useState(null)
@@ -32,7 +32,7 @@ export default function Section1(props) {
             </div>
             <div className="weather-main">
                 <div className="weather-icon">
-                    <img src={`${images(icon)}`} className="icon-" alt={data.weather.id} />
+                    <img src={images(icon)} className="icon-" alt={data.weather.id} />
                 </div>
                 <div className="temperature">
                     <p className="temp">{Math.round(data.weather.temp)}<sup className="tf"><sup>°</sup>C</sup></p>

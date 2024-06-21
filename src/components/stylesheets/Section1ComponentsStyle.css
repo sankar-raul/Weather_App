@@ -1,11 +1,11 @@
 .box-shadow {
     background: #F9FBFF;
-    box-shadow: -2px 3px 14px 1px #E7EDF5;
+    box-shadow: -2px 3px 30px 1px #E7EDF5, -2px 3px 30px #58b7ff41;
     border-radius: 25px;
 }
 .weatherbox {
     width: 95%;
-    height: 70%;
+    height: 60%;
     margin: auto auto;
     display: grid;
     border-radius: 25px;
@@ -15,6 +15,7 @@
 .weatherbox .infos .icon {
     object-fit: contain;
     height: 40%;
+
 }
 .weatherbox .infos {
     display: flex;
@@ -36,18 +37,48 @@
 .weatherbox * {
      border: none; 
 }
-.more-details {
-    border: 1px solid lime;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    /* min-width: 100%; */
-    overflow: hidden;
+.forecast-container::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
 }
-.forecast-component {
+.forecast-container {
     display: flex;
+    overflow: hidden;
+    gap: 10px;
     overflow-x: scroll;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    padding: 5px 10px;
 }
-.more-details .bottom {
-    background: lime;
+.forecast {
+   border-radius: 12px;
+   aspect-ratio: 1 / 1.7;
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   display: grid;
+   grid-template-rows: 3fr 1.8fr 1fr;
+}
+.forecast > .forecast-icon {
+    align-self: center;
+    justify-self: center;
+    width: 70%;
+    margin-top: 20%;
+    filter: drop-shadow(-2px 5px 15px #58b7ff76) blur(0px) brightness(103%);
+}
+.forecast > .percentage {
+    justify-self: center;
+    align-self: center;
+}
+.forecast > .time-stamp {
+    font-size: 0.5rem;
+    justify-self: center;
+    font-family: l;
+    font-weight: 400;
+    display: flex;
+    gap: 2px;
+    align-self: center;
+}
+.weather-info {
+    /* background: rgba(34, 0, 255, 0.295); */
 }

@@ -1,0 +1,5 @@
+.Section2 {
+    /* border: 1px solid rgb(255, 0, 0); */
+    display: grid;
+    grid-template-rows: minmax(100px, 1fr) 2fr;
+}

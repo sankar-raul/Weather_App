@@ -9,7 +9,7 @@ export async function getCoordLocation(...coord) {
   const apiForWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApi}`
     const apiForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${weatherApi}`
     const api = forecast ? apiForecast : apiForWeather
-    console.log(api)
+    // console.log(api)
     try {
         const weatherInfo = await axios.get(api)
         const data = await weatherInfo.data

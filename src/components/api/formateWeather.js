@@ -1,11 +1,20 @@
+const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
 export function formateWeather(data, isKelvin = false) {
     const d = {}
-    d.coord = data.coord
+    if (data.coord) d.coord = data.coord
     d.weather = {...data.weather[0], ...data.main}
     d.weather.visibility = data.visibility
     d.wind = data.wind
     d.clouds = data.clouds.all
     d.sys = data.sys
+    if (data.dt && data.dt_txt) {
+        d.dt = data.dt
+        d.dt_txt = data.dt_txt
+        const dateList = data.dt_txt.split(' ')[0].split('-')
+        const day = new Date(data.dt_txt.split(' ')[0])
+        d.day = days[day.getDay()]
+        d.date = day.getDate()
+    }
     if (!isKelvin) {
     d.sys.timezone = data.timezone // its
     d.city = data.name // its
@@ -13,6 +22,7 @@ export function formateWeather(data, isKelvin = false) {
     } if (isKelvin) { 
        d.time = checkAMPM(data.dt_txt.slice(11, 13))
     }
+    // console.log(data, "  k o k o kok")
     return d
 }
 function checkAMPM(time = NaN) {

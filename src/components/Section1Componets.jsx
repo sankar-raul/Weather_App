@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import { getCoordLocation } from "./api/weather"
 import pressureIcon from "./componentAssets/weather/pressure.png";
 import windIcon from "./componentAssets/weather/wind.png";
+import getIcon from "./plainJs/getIcon"
+import images from "./componentAssets/images"
 import humidityIcon from "./componentAssets/weather/humidity.png";
 import "./stylesheets/Section1ComponentsStyle.css"
 export function WeatherBox(props) {
@@ -41,7 +43,7 @@ export function WeatherInfo(props) {
         </div>
     )
 }
-export function MoreDetails(props) {
+export function ForecastInfo(props) {
     const [forecastInfo, setForecastInfo] = useState(null)
     useEffect(() => {
      let latLon = {latitude: props.data.coord.lat, longitude: props.data.coord.lon}
@@ -54,10 +56,9 @@ export function MoreDetails(props) {
      })
     }, [])
      return (
-         <div className="more-details">
-             {(forecastInfo) ? <Forecast data={forecastInfo} className="forecast-component" /> : <p>Skeleton</p>}
-             <div className="bottom">hello</div>
-         </div>
+         <>
+            {(forecastInfo) ? <Forecast data={forecastInfo} className="forecast-container" /> : <p>Skeleton</p>}
+         </>
      )
  }
  function Forecast(props) {
@@ -67,27 +68,37 @@ export function MoreDetails(props) {
     function ForecastBar({data,index}) {
        
         return (
-                <div key={`${data.time.num}-${data.time.formate}-${index}`} className="forecast">
-                    {data.time.num} {data.time.formate}
+                <div key={`${data.time.num}-${data.time.formate}-${index}`}  className="forecast box-shadow">
+                    <img src={images(getIcon(data.weather.id))} alt={data.weather.id} className="forecast-icon" />
+                    <p className="percentage">
+                        {Math.round(data.weather.temp - 273.15)} <sup>°</sup><sup>c</sup>
+                    </p>
+                    <p className="time-stamp">
+                        <span className="forecast-time">{data.time.num} {data.time.formate},</span>
+                        <span className="forecast-day"> {data.day}</span>
+                        <span className="forecast-date"> {data.date}</span>
+                    </p>
                 </div>
         )
     }
     useEffect(() => {
-        console.log(props.data)
+        // console.log(props.data)
         setKeys(Object.keys(props.data))
     }, [])
     return (
-        <div key={Math.random()} className="forecast-component">
+        <div key={Math.random()} className={props.className}>
         {
           (keys) ? (
             keys.map(key => {
                 var forecastList = props.data[key]
-                console.log(forecastList)
+                // console.log(forecastList)
                 return (
                     <React.Fragment key={key}>
              {   forecastList.map((info, index) => {
                     return (
-                        <ForecastBar key={`${key}-${info.time.num}-${info.time.formate}-${index}`} id={index} index={index} data={info} />
+                        <React.Fragment key={`${key}-${info.time.num}-${info.time.formate}-`}>
+                        <ForecastBar key={`${key}-${info.time.num}-${info.time.formate}-${index}`} id={index} index={index} data={info} className='forecast' />
+                        </React.Fragment>
                     )
                 })
             }

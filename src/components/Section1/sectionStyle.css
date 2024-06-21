@@ -11,7 +11,15 @@
 }
 .weather-main .icon- {
     width: clamp(150px,300px,60%);
-    filter: drop-shadow(-2px 3px 13px #E7EDF5);
+    filter: drop-shadow(-2px 5px 50px #58b7ff76) blur(0px) brightness(103%) grayscale(0%) hue-rotate(0deg);
+    animation: anim 3s ease-in infinite;
+}
+@keyframes anim {
+    0%, 100% {
+        filter: drop-shadow(-2px 5px 50px #58b7ff76) blur(2px) contrast(100%) brightness(110%) grayscale(0%) hue-rotate(0deg);
+    } 50% {
+        filter: drop-shadow(-2px 5px 50px #58b7ff76) blur(0px) contrast(130%) brightness(103%) grayscale(10%) hue-rotate(10deg);
+    }
 }
 .tf {
     font-size: 2rem;
