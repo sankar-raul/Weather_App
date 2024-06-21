@@ -54,8 +54,9 @@
 }
 .forecast {
    border-radius: 12px;
+   /* min-width: 64px; */
    aspect-ratio: 1 / 1.7;
-   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    display: grid;
    grid-template-rows: 3fr 1.8fr 1fr;
 }
@@ -69,12 +70,12 @@
 .forecast > .percentage {
     justify-self: center;
     align-self: center;
+    transform: translate(15%);
 }
 .forecast > .time-stamp {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     justify-self: center;
-    font-family: l;
-    font-weight: 400;
+    font-weight: 350;
     display: flex;
     gap: 2px;
     align-self: center;

@@ -13,7 +13,7 @@
                             "section1 section1 section1"
                             "section2 section2 section2"
                             "section3 section3 section3";
-        grid-template-rows: 64px clamp(430px, 60dvh, 430px) clamp(300px, 45dvh, 400px) clamp(300px, 20dvh, 360px);
+        grid-template-rows: 64px clamp(430px, 60dvh, 430px) clamp(300px, 55vh, 400px) clamp(300px, 20dvh, 360px);
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
