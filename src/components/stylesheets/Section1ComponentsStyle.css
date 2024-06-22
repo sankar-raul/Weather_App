@@ -6,6 +6,8 @@
 .weatherbox {
     width: 95%;
     height: 60%;
+    min-height: 88px;
+    max-height: 105px;
     margin: auto auto;
     display: grid;
     border-radius: 25px;
