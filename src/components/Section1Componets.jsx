@@ -62,9 +62,6 @@ export function ForecastInfo(props) {
      )
  }
  function Forecast(props) {
-    const [forecastInfo, setForecastInfo] = useState(null)
-    const [keys, setKeys] = useState(null) // keys array
-    const [nowAt, setNowAt] = useState(0) // key index
     function ForecastBar({data,index}) {
         return (
                 <div key={`${data.time.num}-${data.time.formate}-${index}`}  className="forecast box-shadow">
@@ -80,15 +77,10 @@ export function ForecastInfo(props) {
                 </div>
             )
     }
-    useEffect(() => {
-        // console.log(props.data)
-        setKeys(Object.keys(props.data))
-    }, [])
     return (
         <div key={Math.random()} className={props.className}>
         {
-          (keys) ? (
-            keys.map(key => {
+            Object.keys(props.data).map(key => {
                 var forecastList = props.data[key]
                 // console.log(forecastList)
                 return (
@@ -104,9 +96,6 @@ export function ForecastInfo(props) {
             </React.Fragment>
             )
         })
-          ) : (
-          <Section2ForecastSkeleton />
-        )
         }
         </div>
     )
