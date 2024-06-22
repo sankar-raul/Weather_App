@@ -4,6 +4,7 @@ import pressureIcon from "./componentAssets/weather/pressure.png";
 import windIcon from "./componentAssets/weather/wind.png";
 import getIcon from "./plainJs/getIcon"
 import images from "./componentAssets/images"
+import { Section2ForecastSkeleton } from "./SectionSkeleton";
 import humidityIcon from "./componentAssets/weather/humidity.png";
 import "./stylesheets/Section1ComponentsStyle.css"
 export function WeatherBox(props) {
@@ -31,8 +32,7 @@ export function WeatherInfo(props) {
 
     return (
         <div className="weather-info">
-            <div className="weather-info-tab box-shadow">
-               
+            <div className="weather-info-tab box-shadow"> 
             </div>
             <div className="weather-info-tab box-shadow">
          
@@ -57,7 +57,7 @@ export function ForecastInfo(props) {
     }, [])
      return (
          <>
-            {(forecastInfo) ? <Forecast data={forecastInfo} className="forecast-container" /> : <p>Skeleton</p>}
+            {(forecastInfo) ? <Forecast data={forecastInfo} className="forecast-container" /> : <Section2ForecastSkeleton />}
          </>
      )
  }
@@ -66,7 +66,6 @@ export function ForecastInfo(props) {
     const [keys, setKeys] = useState(null) // keys array
     const [nowAt, setNowAt] = useState(0) // key index
     function ForecastBar({data,index}) {
-       
         return (
                 <div key={`${data.time.num}-${data.time.formate}-${index}`}  className="forecast box-shadow">
                     <img src={images(getIcon(data.weather.id))} alt={data.weather.id} className="forecast-icon" />
@@ -79,7 +78,7 @@ export function ForecastInfo(props) {
                         <span className="forecast-date"> {data.date}</span>
                     </p>
                 </div>
-        )
+            )
     }
     useEffect(() => {
         // console.log(props.data)

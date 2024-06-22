@@ -26,7 +26,7 @@
 body {
   height: 100dvh;
   max-width: 100dvw;
-  background: linear-gradient(-67deg, #ECF4FF, #F5F9FF);
+  /* background: linear-gradient(-67deg, #ECF4FF, #F5F9FF); */
 }
 #root {
   height: 100%;

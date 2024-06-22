@@ -1,16 +1,32 @@
-import react from "react"
+import react, { useEffect, useState } from "react"
 import "./skeleton.css"
-import "../Section1/sectionStyle.css"
+import "../Section1/sectionStyle.css" // can comment
+// import '../Section2/section2.css'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-export default function Section1Skeleton({className}) {
-    const Load = components[className]
+export default function SectionSkeleton({className}) {
+    const Loading = components[className]
     return (
         <>
          <div className={`${className}`}>
-            <Load />
+            <Loading />
          </div>
         </>
+    )
+}
+export function Section2ForecastSkeleton() {
+    const items = []
+    for (let i = 0; i < 16; i++) {
+        items.push(
+            <div key={`${Math.random()+new Date()}`} style={{display: "block"}} className="forecast">
+                <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"100%"} height="100%"/>
+            </div>
+            )
+    }
+    return (
+        <div key={`${Math.random()+new Date()}`} style={{overflow: "hidden"}} className="forecast-container">
+            {items}
+        </div>
     )
 }
 function Section1() {
@@ -44,10 +60,12 @@ function Section1() {
         </>
     )
 }
+
 function Section2() {
     return (
         <>
-        <p>skeleton 2</p>
+            <Section2ForecastSkeleton />
+            <div className="weather-info"></div>
         </>
     )
 }
