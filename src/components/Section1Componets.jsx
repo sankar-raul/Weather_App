@@ -105,7 +105,7 @@ export function ForecastInfo(props) {
             )
         })
           ) : (
-          <p key={Math.random()}>loading...</p>
+          <Section2ForecastSkeleton />
         )
         }
         </div>
