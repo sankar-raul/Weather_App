@@ -9,6 +9,7 @@ export default function Section1(props) {
     const [data, setData] = useState(null)
     const [country, setCountry] = useState("")
     const [icon, setIcon] = useState("")
+    const [styles, setStyles] = useState({})
     const getDate = () => {
         const day = new Date()
         const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
@@ -17,6 +18,9 @@ export default function Section1(props) {
         setDate(dayString)
     }
     useEffect(() => {
+        if (icon == 'sun') {
+            setStyles({...styles, width: 'clamp(110px,40%,130px)'})
+        }
         setCountry(props.data ? getCountry(props.data.sys.country) : '')
         setIcon(props.data ? getIcon(props.data.weather.id) : '')
         setData(props.data ? props.data : null)
@@ -32,7 +36,7 @@ export default function Section1(props) {
             </div>
             <div className="weather-main">
                 <div className="weather-icon">
-                    <img src={images(icon)} className="icon-" alt={data.weather.id} />
+                    <img style={styles} src={images(icon)} className="icon-" alt={data.weather.id} />
                 </div>
                 <div className="temperature">
                     <p className="temp">{Math.round(data.weather.temp)}<sup className="tf"><sup>°</sup>C</sup></p>

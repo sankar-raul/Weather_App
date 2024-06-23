@@ -10,7 +10,7 @@
     padding: 10px;
 }
 .weather-main .icon- {
-    width: clamp(150px,300px,60%);
+    width: clamp(150px, 40%, 200px);
     filter: drop-shadow(-2px 5px 50px #58b7ff76) brightness(103%);
 }
 .tf {
