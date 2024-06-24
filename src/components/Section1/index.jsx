@@ -47,7 +47,7 @@ export default function Section1(props) {
             <div className="cityName">
                 {county ? (
                     <>
-                    {county} <br />
+                    {county}, <br />
                     </>
                 ) : <CityNameSkeleton />}
                 {country}
