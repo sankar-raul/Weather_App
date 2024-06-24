@@ -19,7 +19,7 @@ export function Section2ForecastSkeleton() {
     for (let i = 0; i < 16; i++) {
         items.push(
             <div key={`${Math.random()+new Date()}`} style={{display: "block"}} className="forecast">
-                <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"100%"} height="100%"/>
+                <Skeleton baseColor="#e3F0fdaa" borderRadius='12px' highlightColor="#07affe11" duration={1.3} width={"100%"} height="100%"/>
             </div>
             )
     }
