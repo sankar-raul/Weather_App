@@ -33,22 +33,22 @@ function Section1() {
     return (
         <>
         <div className="cityName">
-               <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"60%"} height={25}/>
-               <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"30%"} height={25}/>
+               <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"60%"} borderRadius={6} height={16}/>
+               <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"40%"} borderRadius={6} height={16}/>
                 <p className="date">
-                <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"45%"} height={17}/>
+                <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"35%"} borderRadius={6} height={12}/>
                 </p>
             </div>
             <div className="weather-main" style={{gap: "10px"}}>
                 <div className="weather-icon" style={{position: "relative", height: "100%"}}>
-                <Skeleton style={{position: ""}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"100%"} height={"100%"}/>
+                <Skeleton style={{position: ""}} baseColor="#e3F0fdaa" highlightColor="#07affe11" borderRadius={6} duration={1.3} width={"80%"} height={"100%"}/>
                 </div>
                 <div className="temperature">
                     <p className="temp">
-                    <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"30%"} height={"55%"} inline={true}/>
+                    <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} borderRadius={6} width={"30%"} height={"55%"} inline={true}/>
                         <sup className="tf"><sup>
                             &nbsp;
-                            <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"30px"} height={"55%"} inline={true}/>
+                            <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"20%"} height={"55%"} inline={true}/>
                             </sup>
                             </sup></p>
                     <p className="description">
@@ -81,22 +81,22 @@ function Weatherbox() {
         <div className="weatherbox">
         <div className="infos" style={{position: "relative"}}>
         <Skeleton style={{position: ""}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"50px"} height={"165%"} inline={false}/>
-            <p className="value">&nbsp;</p>
+            <p style={{margin: '3%'}} className="value">&nbsp;</p>
             <p className="name">
-            <Skeleton style={{position: "relative", marginTop: "0%"}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"60px"} height={"45%"} inline={false}/>
+            <Skeleton style={{position: "relative", marginTop: "0%"}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"60px"} height={"75%"} inline={false}/>
             </p>
         </div>
         <div className="infos" style={{position: "relative"}}>
         <Skeleton style={{position: ""}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"50px"} height={"165%"} inline={false}/>
-            <p className="value">&nbsp;</p>
+            <p style={{margin: '3%'}} className="value">&nbsp;</p>
             <p className="name">
-                <Skeleton style={{position: "relative", marginTop: "0%"}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"60px"} height={"45%"} inline={false}/>
+                <Skeleton style={{position: "relative", marginTop: "0%"}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"60px"} height={"75%"} inline={false}/>
             </p>
         </div>
         <div className="infos" style={{position: "relative"}}>
         <Skeleton style={{position: ""}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"50px"} height={"165%"} inline={false}/>
-            <p className="value">&nbsp;</p>
-            <p className="name"><Skeleton style={{position: "relative", marginTop: "0%"}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"60px"} height={"45%"} inline={false}/></p>
+            <p style={{margin: '3%'}} className="value">&nbsp;</p>
+            <p className="name"><Skeleton style={{position: "relative", marginTop: "0%"}} baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"60px"} height={"75%"} inline={false}/></p>
         </div>
     </div>
     )

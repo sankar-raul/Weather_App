@@ -4,6 +4,8 @@ import "./sectionStyle.css"
 import axios from "axios"
 import getIcon from "../plainJs/getIcon"
 import images from "../componentAssets/images"
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { WeatherBox, WeatherInfo } from "../Section1Componets"
 export default function Section1(props) {
     const [date, setDate] = useState("")
@@ -23,6 +25,12 @@ export default function Section1(props) {
         const dayString = days[day.getDay()] + ", " + months[day.getMonth()] + " " + day.getDate()
         setDate(dayString)
     }
+    const CityNameSkeleton = () => {
+
+        return (
+            <Skeleton baseColor="#e3F0fdaa" highlightColor="#07affe11" duration={1.3} width={"60%"} inline={true} height={16}/>
+        )
+    }
     useEffect(() => {
         if (icon == 'sun') {
             setStyles({...styles, width: 'clamp(110px,40%,130px)'})
@@ -37,7 +45,11 @@ export default function Section1(props) {
         <>
    {data ? ( <div className="Section1">
             <div className="cityName">
-                {county || data.city},<br />
+                {county ? (
+                    <>
+                    {county} <br />
+                    </>
+                ) : <CityNameSkeleton />}
                 {country}
                 <p className="date">{date}</p>
             </div>
