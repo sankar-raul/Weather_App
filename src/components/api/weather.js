@@ -1,6 +1,6 @@
 import axios from "axios"
 import {formateWeather, formateForecast} from "./formateWeather"
-const weatherApi =  "f526858f3b1e4012abfdbd9ed3854011"
+const weatherApi = import.meta.env.VITE_OPEN_WEATHER_API
 export async function getCoordLocation(...coord) {
     if (!(coord[0].latitude && coord[0].longitude)) {
         return {msg: "Both query lat and lon is required"}
