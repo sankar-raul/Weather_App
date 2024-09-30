@@ -1,12 +1,11 @@
 {
-    "name": "Weather App",
-    "short_name": "Weather",
-    "description": "Check any locations weather",
+  "short_name": "Weather",
+  "name": "Weather App",
   "icons": [
     {
       "src": "/icon.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
       "src": "/icon.png",
@@ -21,7 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#fff",
-  "background_color": "#fff"
+  "theme_color": "#000",
+  "background_color": "#000"
 }
-  
