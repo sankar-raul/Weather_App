@@ -1,4 +1,3 @@
-import react, { useEffect, useState } from "react"
 import "./skeleton.css"
 import "../Section1/sectionStyle.css" // can comment
 // import '../Section2/section2.css'
@@ -72,7 +71,7 @@ function Section2() {
 function Section3() {
     return (
         <>
-        <p>skeleton 3</p>
+        <p>Loading...</p>
         </>
     )
 }

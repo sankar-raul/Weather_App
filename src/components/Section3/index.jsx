@@ -1,8 +1,13 @@
-export default function Section3(props) {
+import useWeather from "../../context/WeatherData"
+import SectionSkeleton from "../SectionSkeleton"
 
+export default function Section3() {
+    const {weatherData} = useWeather()
     return (
-        <div className="Section3">
+        <>
+        {weatherData ? <div className="Section3">
             Working on it!
-        </div>
+        </div> : <SectionSkeleton className="Section3"/>}
+        </>
     )
 }

@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { getCoordLocation } from "./api/weather"
+import { Fragment, useEffect } from "react"
 import pressureIcon from "./componentAssets/weather/pressure.png";
 import windIcon from "./componentAssets/weather/wind.png";
 import getIcon from "./plainJs/getIcon"
+import PropTypes from 'prop-types'
 import images from "./componentAssets/images"
 import { Section2ForecastSkeleton } from "./SectionSkeleton";
 import humidityIcon from "./componentAssets/weather/humidity.png";
 import "./stylesheets/Section1ComponentsStyle.css"
+import useWeather from "../context/WeatherData";
 export function WeatherBox(props) {
  return (
     <div className="weatherbox box-shadow">
@@ -28,7 +29,7 @@ export function WeatherBox(props) {
     </div>
     )
 }
-export function WeatherInfo(props) {
+export function WeatherInfo() {
 
     return (
         <div className="weather-info">
@@ -43,60 +44,59 @@ export function WeatherInfo(props) {
         </div>
     )
 }
-export function ForecastInfo(props) {
-    const [forecastInfo, setForecastInfo] = useState(null)
-    useEffect(() => {
-     let latLon = {latitude: props.data.coord.lat, longitude: props.data.coord.lon}
-     getCoordLocation({...latLon, forecast: true})
-     .then(data => {
-         setForecastInfo(data)
-     })
-     .catch(error => {
-         console.log(error)
-     })
-    }, [])
+export function ForecastInfo() {
+    const { forecastData } = useWeather()
+    
      return (
          <>
-            {(forecastInfo) ? <Forecast data={forecastInfo} className="forecast-container" /> : <Section2ForecastSkeleton />}
+            {forecastData ? <Forecast forecastData={forecastData} className="forecast-container" /> : <Section2ForecastSkeleton />}
          </>
      )
  }
- function Forecast(props) {
-    function ForecastBar({data,index}) {
-        return (
-                <div key={`${data.time.num}-${data.time.formate}-${index}`}  className="forecast box-shadow">
-                    <img src={images(getIcon(data.weather.id))} alt={data.weather.id} className="forecast-icon" />
-                    <p className="percentage">
-                        {Math.round(data.weather.temp - 273.15)} <sup>°</sup><sup>c</sup>
-                    </p>
-                    <p className="time-stamp">
-                        <span className="forecast-time">{data.time.num} {data.time.formate},</span>
-                        <span className="forecast-day"> {data.day}</span>
-                        <span className="forecast-date"> {data.date}</span>
-                    </p>
-                </div>
-            )
-    }
+ function Forecast({forecastData, className}) {
+    
     return (
-        <div key={Math.random()} className={props.className}>
+        <div key={Math.random()} className={className}>
         {
-            Object.keys(props.data).map(key => {
-                var forecastList = props.data[key]
+            Object.keys(forecastData).map(key => {
+                const forecastList = forecastData[key]
                 // console.log(forecastList)
                 return (
-                    <React.Fragment key={key}>
+                    <Fragment key={key}>
              {   forecastList.map((info, index) => {
                     return (
-                        <React.Fragment key={`${key}-${info.time.num}-${info.time.formate}-`}>
-                        <ForecastBar key={`${key}-${info.time.num}-${info.time.formate}-${index}`} id={index} index={index} data={info} className='forecast' />
-                        </React.Fragment>
+                        <Fragment key={index}>
+                            <ForecastBar data={info} />
+                        </Fragment>
                     )
                 })
             }
-            </React.Fragment>
+            </Fragment>
             )
         })
         }
         </div>
     )
+}
+Forecast.propTypes = {
+    forecastData: PropTypes.object.isRequired,
+    className: PropTypes.string.isRequired
+}
+function ForecastBar({data}) {
+    return (
+            <div className="forecast box-shadow">
+                <img src={images(getIcon(data.weather.id))} alt={data.weather.id} className="forecast-icon" />
+                <p className="percentage">
+                    {Math.round(data.weather.temp - 273.15)} <sup>°</sup><sup>c</sup>
+                </p>
+                <p className="time-stamp">
+                    <span className="forecast-time">{data.time.num} {data.time.formate},</span>
+                    <span className="forecast-day"> {data.day}</span>
+                    <span className="forecast-date"> {data.date}</span>
+                </p>
+            </div>
+        )
+}
+ForecastBar.propTypes = {
+    data: PropTypes.object.isRequired,
 }
