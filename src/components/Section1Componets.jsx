@@ -8,26 +8,31 @@ import { Section2ForecastSkeleton } from "./SectionSkeleton";
 import humidityIcon from "./componentAssets/weather/humidity.png";
 import "./stylesheets/Section1ComponentsStyle.css"
 import useWeather from "../context/WeatherData";
-export function WeatherBox(props) {
+export function WeatherBox({pressure, wind, humidity}) {
  return (
     <div className="weatherbox box-shadow">
         <div className="infos">
             <img src={pressureIcon} alt="air pressure" className="icon" />
-            <p className="value">{props.pressure}  mb</p>
+            <p className="value">{pressure}  mb</p>
             <p className="name">Air Pressure</p>
         </div>
         <div className="infos">
         <img src={windIcon} alt="wind speed" className="icon" />
-            <p className="value">{props.wind} k/h</p>
+            <p className="value">{wind} k/h</p>
             <p className="name">Wind Speed</p>
         </div>
         <div className="infos">
         <img src={humidityIcon} alt="humidity" className="icon" />
-            <p className="value">{props.humidity} %</p>
+            <p className="value">{humidity} %</p>
             <p className="name">Humidity</p>
         </div>
     </div>
     )
+}
+WeatherBox.propTypes = {
+    pressure: PropTypes.number.isRequired,
+    wind: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired
 }
 export function WeatherInfo() {
 
@@ -60,7 +65,6 @@ export function ForecastInfo() {
         {
             Object.keys(forecastData).map(key => {
                 const forecastList = forecastData[key]
-                // console.log(forecastList)
                 return (
                     <Fragment key={key}>
              {   forecastList.map((info, index) => {

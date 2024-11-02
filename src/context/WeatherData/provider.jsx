@@ -8,13 +8,18 @@ export const WeatherProvider = ({children}) => {
     const [ citySearch, setCitySearch ] = useState(null)
     const [ weatherData, setWeatherData ] = useState(null)
     const [ forecastData, setForecastData ] = useState(null)
-    const [pathname, setPathname] = useState(location.pathname)
+    const [isPathChanged, setIsisPathChanged] = useState(false)
     const [ county, setCounty ] = useState(null)
+    const [error, seterror] = useState(null)
+
 
     const handlePathChange = () => {
-        setPathname(location.pathname)
+        console.log(location.pathname)
+        setIsisPathChanged(prev => !prev)
     }
-    
+    useEffect(() => {
+        console.log(error)
+    }, [error])
     useEffect(() => {
         if (coordinates) {
             getCountyName(coordinates.latitude, coordinates.longitude).then(setCounty)
@@ -30,7 +35,6 @@ export const WeatherProvider = ({children}) => {
             setWeatherData(null)
             setForecastData(null)
             setCounty(null)
-            console.log("ok")
             const controller = new AbortController()
             ;(async () => {
                 try {
@@ -38,15 +42,17 @@ export const WeatherProvider = ({children}) => {
                 // console.log(data)
                 setWeatherData(data)
                 setCounty(data.city)
-                } catch (e) {
-                //  console.log(e.name)
+                } catch (error) {
+                    console.log(error.message)
+                    seterror(prev => error.message !== "Request aborted" ? error.message : prev)
                 }
             })()
-            getCityInfo(citySearch, true, controller.signal).then(setForecastData).catch(error => {
-                // console.log(error.name)
+            getCityInfo(citySearch, true, controller.signal).then(setForecastData).catch(() => {
+                // console.log('')
             })
             return () => {
                 setWeatherData(null)
+                seterror(null)
                 setForecastData(null)
                 controller.abort()
             }
@@ -65,7 +71,10 @@ export const WeatherProvider = ({children}) => {
 
     useEffect(() => {
         // requensing and setting coordinates of user if user is in homepage ('/' route) and if user cordinates location is never asigned a value
-        if (pathname === '/') {
+        setWeatherData(null)
+        setForecastData(null)
+        setCounty(null)
+        if (location.pathname === '/') {
             setCitySearch(null)
             if (!coordinates) {
                 (async () => {
@@ -79,10 +88,12 @@ export const WeatherProvider = ({children}) => {
             getCoordLocation(coordinates).then(setWeatherData)
             getCoordLocation({...coordinates, forecast: true}).then(setForecastData) 
     }
+    } else {
+        // console.log(pathname)
     }
-    }, [pathname])
+    }, [isPathChanged])
     useEffect(() => {
-        console.log(county)
+        county && console.log(county)
     }, [county])
     useEffect(() => {
         // Listen for URL changes
@@ -98,7 +109,10 @@ export const WeatherProvider = ({children}) => {
         weatherData,
         forecastData,
         county,
-        setCitySearch
+        setCitySearch,
+        citySearch,
+        error,
+        setIsisPathChanged
     }}>
         {children}
     </WeatherContext.Provider>
@@ -107,19 +121,4 @@ export const WeatherProvider = ({children}) => {
 WeatherProvider.propTypes = {
     children: node.isRequired
 }
-
-// const getWeatherData = () => {
-//     try {
-//         getLocation()
-//         .then(async data => {
-//             const weatherInfo = await getCoordLocation(data)
-//             setData(weatherInfo)
-//         })
-//         .catch(error => {
-//             console.log(error)
-//         })
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
 export default WeatherProvider

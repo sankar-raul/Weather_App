@@ -27,18 +27,25 @@ export async function getCityInfo(city, forecast, signal) {
     if (city) {
     try {
         const weatherInfo = await axios.get(endPoint, {signal: signal})
-        const data = await weatherInfo.data
-        return forecast ? formateForecast(data) : formateWeather(data)
+        return forecast ? formateForecast(weatherInfo.data) : formateWeather(weatherInfo.data)
     } catch (error) {
-        return null
+        if (forecast) return null
+        if (error.code === "ERR_CANCELED") {
+            throw new Error("Request aborted")
+        } else if (error.code === "ERR_NETWORK") {
+            throw new Error("Network error")
+        } else if (error.code === "ERR_BAD_REQUEST" && error.status === 404) {
+            throw new Error("City not found")
+        } else {
+            throw new Error(error.message)
+        }
     }
 } else {
-    return {msg: "query city is required"}
+    throw new Error({msg: "query city is required"})
 }
 }
 export const getCountyName = async (lat, lon) => {
     const _data = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${lat},${lon}&key=ad486f2f305d4b15ba0d55787d0e4b1e`)
-    console.log(_data?.data.results[0].components.county, "county")
     return await _data?.data.results[0].components.county || _data?.data.results[0].components.city || _data?.data.results[0].components.state || _data?.data.results[0].components.country
 }
 const WeatherAPI = {getCoordLocation, getCityInfo, getCountyName}

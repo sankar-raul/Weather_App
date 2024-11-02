@@ -16,6 +16,7 @@ export default function Section1() {
     const [icon, setIcon] = useState("")
     const [styles, setStyles] = useState({})
 
+
     const getDate = () => {
         const day = new Date()
         const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
@@ -38,6 +39,8 @@ export default function Section1() {
     useEffect(() => {
         if (icon == 'sun') {
             setStyles({...styles, width: 'clamp(110px,40%,130px)'})
+        } else {
+            setStyles({...styles, width: 'var(--default-width)'})
         }
     }, [icon])
     useEffect(() => {

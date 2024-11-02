@@ -30,7 +30,7 @@ const Searchbox = () => {
     const navigate = useNavigate()
     const [ searchParams, setSearchParams ] = useSearchParams()
     const pageLocation = useLocation()
-    const currentCity = searchParams.get('city')
+    const currentCity = searchParams.get('city')?.trim()
     const [ city, setCity ] = useState(currentCity || '')
     const isSearchPath = pageLocation.pathname.includes('search') && currentCity
     const handleSubmit = (e) => {
@@ -43,9 +43,9 @@ const Searchbox = () => {
     }
     useEffect(() => {
         if (isSearchPath) {
-            setCity(searchParams.get('city'))
+            setCity(searchParams.get('city')?.trim())
             // console.log(searchParams.get('city'))
-            setCitySearch(searchParams.get('city'))
+            setCitySearch(searchParams.get('city')?.trim())
         }
     }, [searchParams, isSearchPath, setCitySearch])
     useEffect(() => {
