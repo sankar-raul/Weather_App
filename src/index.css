@@ -31,6 +31,29 @@ body {
 #root {
   height: 100%;
 }
+.loader {
+  place-self: center;
+  height: 50px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-image: conic-gradient(rgba(14, 103, 255, .6) 50deg, transparent 230deg);
+  margin-top: 50%;
+  animation: loading .4s linear infinite;
+}
+.loader::before {
+  content: '';
+  inset: 5px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+}
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(-360deg);
+  }
+}
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
