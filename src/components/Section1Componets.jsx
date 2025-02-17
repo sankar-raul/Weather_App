@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react"
+import { Fragment } from "react"
 import pressureIcon from "./componentAssets/weather/pressure.png";
 import windIcon from "./componentAssets/weather/wind.png";
 import getIcon from "./plainJs/getIcon"
@@ -54,7 +54,7 @@ export function ForecastInfo() {
     
      return (
          <>
-            {forecastData ? <Forecast forecastData={forecastData} className="forecast-container" /> : <Section2ForecastSkeleton />}
+            {forecastData ? <><Forecast forecastData={forecastData} className="forecast-container" /> <div className="forecast-details">in development</div></> : <Section2ForecastSkeleton />}
          </>
      )
  }
