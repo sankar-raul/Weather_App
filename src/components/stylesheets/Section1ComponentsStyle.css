@@ -71,7 +71,7 @@
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    display: grid;
    grid-template-rows: 3fr 1.8fr 1fr;
-   transition-duration: .3s;
+   transition: .2s;
    height: 80%;
    cursor: pointer;
    position: relative;
