@@ -1,6 +1,6 @@
 .box-shadow {
     background: var(--secondery-bg);
-    box-shadow: -2px 3px 10px 1px #3331, -1px 1px 25px #3364;
+    box-shadow: -2px 3px 10px 1px #3331, -1px 1px 25px #2251;
     border-radius: 25px;
 }
 .weatherbox {

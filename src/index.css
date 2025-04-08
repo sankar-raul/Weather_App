@@ -11,7 +11,9 @@
   --primary-bg: #fff;
   --secondery-bg: #F9FBFF;
   --invert: 0%;
-  --invert-img: invert(0%);
+  /* --invert-img: invert(0%); */
+  --invert-img: invert(10%) contrast(144%) brightness(100%) hue-rotate(320deg);
+
 }
 ::spelling-error {
   text-decoration: underline dotted #f348;
@@ -65,7 +67,7 @@ body {
     transform: rotate(-360deg);
   }
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --primary-color: #efefef;
     --primary-bg: #030303;
