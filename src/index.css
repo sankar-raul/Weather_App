@@ -67,7 +67,7 @@ body {
     transform: rotate(-360deg);
   }
 }
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     --primary-color: #efefef;
     --primary-bg: #030303;
