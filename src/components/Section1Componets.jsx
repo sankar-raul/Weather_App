@@ -89,7 +89,7 @@ function ForecastBar({data}) {
             <div className="forecast box-shadow">
                 <img src={images(getIcon(data.weather.id))} alt={data.weather.id} className="forecast-icon" />
                 <p className="percentage">
-                    {Math.round(data.weather.temp - 273.15)} <sup>°</sup><sup>F</sup>
+                    {Math.round(data.weather.temp - 273.15)} <sup>°</sup><sup>c</sup>
                 </p>
                 <p className="time-stamp">
                     <span className="forecast-time">{data?.time.num} {data?.time.formate},</span>
