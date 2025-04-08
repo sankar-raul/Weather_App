@@ -12,7 +12,7 @@
 .weather-main .icon- {
     --default-width: clamp(150px, 45%, 200px);
     width: var(--default-width);
-    filter: drop-shadow(-2px 5px 50px #58b7ff76) brightness(103%);
+    filter: drop-shadow(-2px 5px 50px #58b7ff76) brightness(103%) var(--invert-img);
 }
 .tf {
     font-size: 2rem;

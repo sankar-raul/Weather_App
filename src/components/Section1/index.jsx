@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import getCountry  from "../plainJs/getCountry"
 import "./sectionStyle.css"
 import axios from "axios"
@@ -15,7 +15,12 @@ export default function Section1() {
     const [country, setCountry] = useState("")
     const [icon, setIcon] = useState("")
     const [styles, setStyles] = useState({})
-
+    const [ thmeHue, setthmeHue ] = useState(null)
+    
+    const getColor = useCallback((prevHue) => {
+        const hue = (Math.round(Math.random() * 8)) * 45 + 'deg'
+        return hue == prevHue || hue == '180deg' ? getColor(prevHue) : hue
+    }, [])
 
     const getDate = () => {
         const day = new Date()
@@ -36,6 +41,10 @@ export default function Section1() {
         setCountry(getCountry(weatherData?.sys.country))
         getDate()
     }
+    const handlePageTheme = useCallback(() => {
+        setthmeHue(prev => getColor(prev))
+    }, [getColor])
+
     useEffect(() => {
         if (icon == 'sun') {
             setStyles({...styles, width: 'clamp(110px,40%,130px)'})
@@ -43,9 +52,16 @@ export default function Section1() {
             setStyles({...styles, width: 'var(--default-width)'})
         }
     }, [icon])
+
     useEffect(() => {
         weatherData && handleInitialState()
-    }, [weatherData])
+        weatherData ?? handlePageTheme()
+    }, [weatherData, handlePageTheme])
+
+    useEffect(() => {
+        // console.log(thmeHue)
+        document.documentElement.style.setProperty('--hue', thmeHue)
+    }, [thmeHue])
     return (
         <>
    {weatherData ? ( <div className="Section1">

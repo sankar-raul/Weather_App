@@ -6,6 +6,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #212121;
+  --primary-bg: #fff;
+  --secondery-bg: #F9FBFF;
+  --invert: 0%;
+  --invert-img: invert(0%);
 }
 ::spelling-error {
   text-decoration: underline dotted #f348;
@@ -26,6 +32,8 @@
 body {
   height: 100dvh;
   max-width: 100dvw;
+  background-color: var(--primary-bg);
+  color: var(--primary-color);
   /* background: linear-gradient(-67deg, #ECF4FF, #F5F9FF); */
 }
 #root {
@@ -57,15 +65,13 @@ body {
     transform: rotate(-360deg);
   }
 }
-/* @media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --primary-color: #efefef;
+    --primary-bg: #030303;
+    --invert: 100%;
+    --hue: 164deg;
+    --invert-img: invert(100%) contrast(204%) brightness(160%) hue-rotate(var(--hue));
+    --secondery-bg: #ffffff15;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
+}

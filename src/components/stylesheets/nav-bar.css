@@ -13,10 +13,12 @@
     object-fit: contain;
     height: 70%;
     margin-left: 20%;
+    filter: invert(var(--invert));
 }
 .SButton {
     border-radius: 50%;
     height: 60%;
+    filter: invert(var(--invert));
 }
 .SBox {
     height: 60%;
@@ -27,19 +29,20 @@
     width: 100%;
     border-radius: 1px;
     border: 1px solid #ddd6;
-    background: #ECF4FF;
+    background: var(--secondery-bg);
     caret-color: rgb(86, 170, 85);
     outline: none;
     padding: 6px;
-    color: #1248;
+    color: var(--primary-color);
     font-size: 17px;
+    letter-spacing: 1px;
 }
 .SBox > input:focus {
     outline: 2px solid #ddd3;
 }
 .SBox > input::placeholder {
     font-size: 13px;
-    color: #1246;
+    color: var(--primary-color);
 }
 .Searchbox {
     height: 100%;

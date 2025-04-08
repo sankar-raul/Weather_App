@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
 import style from './MainFrame.module.css'
-class MainFrame extends Component {
- constructor(props) {
-    super(props)
- }
- render() {
-   return (
+import PropTypes from 'prop-types'
+
+function MainFrame({children}) {
+
+  return (
     <main className={style.mainFrame}>
-        {this.props.children}
+      {children}
     </main>
-   )
- }
+  )
 }
+MainFrame.propTypes = {
+  children: PropTypes.node.isRequired
+}
+
 export default MainFrame

@@ -69,9 +69,7 @@ export function ForecastInfo() {
                     <Fragment key={key}>
              {   forecastList.map((info, index) => {
                     return (
-                        <Fragment key={index}>
-                            <ForecastBar data={info} />
-                        </Fragment>
+                            <ForecastBar key={index} data={info} />
                     )
                 })
             }
@@ -91,12 +89,12 @@ function ForecastBar({data}) {
             <div className="forecast box-shadow">
                 <img src={images(getIcon(data.weather.id))} alt={data.weather.id} className="forecast-icon" />
                 <p className="percentage">
-                    {Math.round(data.weather.temp - 273.15)} <sup>°</sup><sup>c</sup>
+                    {Math.round(data.weather.temp - 273.15)} <sup>°</sup><sup>F</sup>
                 </p>
                 <p className="time-stamp">
-                    <span className="forecast-time">{data.time.num} {data.time.formate},</span>
-                    <span className="forecast-day"> {data.day}</span>
-                    <span className="forecast-date"> {data.date}</span>
+                    <span className="forecast-time">{data?.time.num} {data?.time.formate},</span>
+                    <span className="forecast-day"> {data?.day}</span>
+                    <span className="forecast-date"> {data?.date}</span>
                 </p>
             </div>
         )
